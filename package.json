@@ -1,0 +1,21 @@
+{
+  "name": "swati_pro",
+  "version": "1.0.0",
+  "description": "it is swati project's",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Swati",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "fs": "^0.0.1-security",
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "iamdeepak199"
+  }
+}

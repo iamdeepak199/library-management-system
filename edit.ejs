@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Information</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+  <h1> Books Re-Issue Information</h1>
+  <br><br>
+  <form action="/update" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="s_no" > <!-- Hidden input for record ID -->
+  
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name"  required><br>
+  
+    <label for="phn_no">Phone Number:</label>
+    <input type="text" id="phn_no" name="phn_no"  required><br>
+  
+    <label for="roll_no">Roll No:</label>
+    <input type="text" id="roll_no" name="roll_no"  required><br>
+  
+    <label for="branch">Branch & Section:</label>
+    <input type="text" id="branch" name="branch"  required><br>
+  
+    <label for="book_name">Book Name & ID:</label>
+    <input type="text" id="book_name" name="book_name"  required><br>
+  
+    <label for="issue_date">Issue Date:</label>
+    <input type="date" id="date" name="issue_date" required><br>
+  
+    <label for="photo">Upload Photo:</label>
+    <input type="file" id="photo" name="photo"><br>
+  
+    <button type="submit">Update</button>
+  </form>
+  
+  </form>
+  </div>
+</body>
+</html>

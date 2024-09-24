@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New User Register</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+          <h1>Add Students Details</h1>
+    <form action="/add" method="POST" enctype="multipart/form-data">
+
+   
+
+    <!-- Name -->
+    <label for="Name">Name:</label>
+    <input type="text" id="Name" name="Name" required><br><br>
+
+    <!-- Phone Number -->
+    <label for="phn_no">Phone Number:</label>
+    <input type="tel" id="phn_no" name="phn_no" pattern="[0-9]{10}" required><br><br>
+
+    <!-- Address -->
+    <label for="Roll_no">Roll No:</label>
+    <input type="text" id="Roll_no" name="Roll_no" required><br><br>
+
+    <!-- Service Type -->
+    <label for="Branch">Branch:</label>
+    <input type="text" id="branch" name="Branch" required><br><br>
+
+    <!-- Family Information -->
+    <label for="Book_name">Book Name & Book Id:</label>
+    <textarea id="Book_name" name="Book_name" rows="4" required></textarea><br><br>
+
+    <!-- Photo -->
+    <label for="photo">Upload Photo:</label>
+    <input type="file" id="photo" name="photo" accept="image/*" required><br><br>
+
+    <label for="issue_date">Issuing Date:</label>
+    <input type="date" id="issue_date" name="date" required>
+    
+    
+
+    <!-- Submit Button -->
+    <button type="submit">Add</button>
+    <a href="/lifts" class="button">View All</a>
+
+  </form>
+
+  </div>
+</body>
+</html>

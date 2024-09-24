@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Users Informations</title>
+  <link rel="stylesheet" href="/styledisplay.css">
+  <script>
+    function searchTable() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      const tableRows = document.querySelectorAll("tbody tr");
+
+      tableRows.forEach(row => {
+        const cells = row.querySelectorAll("td");
+        let match = Array.from(cells).some(cell => 
+          cell.textContent.toLowerCase().includes(input)
+        );
+
+        row.style.display = match ? "" : "none";
+      });
+    }
+
+    function goBack() {
+      window.history.back();
+    }
+
+    function deleteRow(button) {
+      const row = button.closest('tr');
+      const rowIndex = row.rowIndex; // Get the index of the row
+
+      // Here you would typically make an AJAX call to delete from the database
+      // Example:
+      // fetch('/delete', {
+      //   method: 'POST',
+      //   body: JSON.stringify({ index: rowIndex }),
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   }
+      // }).then(response => {
+      //   if (response.ok) {
+      //     row.parentNode.removeChild(row);
+      //   }
+      // });
+
+      // For now, just remove the row
+      row.parentNode.removeChild(row);
+    }
+
+    function editRow(button) {
+      const row = button.closest('tr');
+      const editForm = document.getElementById('editForm');
+
+      // Populate the form
+      editForm.name.value = row.cells[1].innerText;
+      editForm.phoneNo.value = row.cells[2].innerText;
+      editForm.rollNo.value = row.cells[3].innerText;
+      editForm.branchSection.value = row.cells[4].innerText;
+      editForm.bookDetails.value = row.cells[5].innerText;
+
+      // Show the form (consider using a modal)
+      editForm.style.display = 'block';
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h4>LIBRARY MANAGEMENT</h4>
+    <div class="container1">
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#">Administrator</a></li>
+          <button class="button" onclick="goBack()">LOGOUT</button>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <br>
+  <footer>
+    <div class="container2">
+      <h4>Students Record List</h4>
+      <nav>
+        <ul class="nav-links">
+          <a href="/lifts"><button class="buttongreen">Add</button></a>
+          <a href="/edit"><button class="buttonorg">Re-Issue</button></a>
+          <a href="/delete"><button class="buttonsky">Delete</button></a>
+          <a href="/defaulters"><button class="button">Defaulters</button></a>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+  <br>
+  <ul class="containers">
+    <a href="/returnbook"><button class="button">Return Book</button></a>
+    <input type="text" id="searchInput" placeholder="Search..." onkeyup="searchTable()">
+  </ul>
+
+  <table>
+    <thead>
+      <tr>
+        <th>S.NO</th>
+        <th>Name</th>
+        <th>Phone no</th>
+        <th>Roll No</th>
+        <th>Branch & section</th>
+        <th>Book Name & Id</th>
+        <th>Photo</th>
+        <th>Issue date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% lifts.forEach(function(lift) { %>
+        <tr>
+          <td><%= lift.s_no %></td>
+          <td><%= lift.name %></td>
+          <td><%= lift.phn_no %></td>
+          <td><%= lift.roll_no %></td>
+          <td><%= lift.branch %></td>
+          <td><%= lift.book_name %></td>
+          <td><img src="<%= lift.photo %>" alt="User Photo" width="100"></td>
+          <td><%= lift.issue_date %></td>
+          <td>
+            <button onclick="deleteRow(this)">Delete</button>
+            <button onclick="editRow(this)">Edit</button>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+
+  <button class="button" onclick="goBack()">Back</button>
+
+  <!-- Edit Form (modal) -->
+  <div id="editForm" style="display:none;">
+    <h3>Edit User Information</h3>
+    <form>
+      <input type="text" name="name" placeholder="Name">
+      <input type="text" name="phoneNo" placeholder="Phone No">
+      <input type="text" name="rollNo" placeholder="Roll No">
+      <input type="text" name="branchSection" placeholder="Branch & Section">
+      <input type="text" name="bookDetails" placeholder="Book Details">
+      <button type="submit">Save Changes</button>
+    </form>
+  </div>
+</body>
+</html>

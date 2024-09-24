@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Users Informations</title>
+  <link rel="stylesheet" href="/styledisplay.css">
+  <script>
+    function searchTable() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      const tableRows = document.querySelectorAll("tbody tr");
+
+      tableRows.forEach(row => {
+        const cells = row.querySelectorAll("td");
+        let match = false;
+
+        cells.forEach(cell => {
+          if (cell.textContent.toLowerCase().includes(input)) {
+            match = true;
+          }
+        });
+
+        row.style.display = match ? "" : "none";
+      });
+    }
+
+    function goBack() {
+                window.history.back();
+            }
+  </script>
+</head>
+<body>
+  <input type="text" id="searchInput" placeholder="Search..." onkeyup="searchTable()">
+</ul>  
+
+  <table>
+    <thead>
+      <tr>
+        <th>S.NO</th>
+        <th>Name</th>
+        <th>Phone no</th>
+        <th>Roll No</th>
+        <th>Branch & section</th>
+        <th>Book Name & Id</th>
+        <th>Photo</th>
+        <th>Issue date</th>
+      </tr>
+    </thead>
+   
+      </tbody>
+  </table>
+
+  <button class="button" onclick="goBack()">Back</button>
+</body>
+</html>

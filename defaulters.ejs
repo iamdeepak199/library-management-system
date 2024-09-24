@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Users Informations</title>
+  <link rel="stylesheet" href="/styledisplay.css">
+  <script>
+    function searchTable() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      const tableRows = document.querySelectorAll("tbody tr");
+
+      tableRows.forEach(row => {
+        const cells = row.querySelectorAll("td");
+        let match = false;
+
+        cells.forEach(cell => {
+          if (cell.textContent.toLowerCase().includes(input)) {
+            match = true;
+          }
+        });
+
+        row.style.display = match ? "" : "none";
+      });
+    }
+
+    function goBack() {
+                window.history.back();
+            }
+  </script>
+</head>
+<body>
+  <header>
+    <h4>LIBRAYRY MANAGEMENT</h4>
+    <div class="container1">
+        
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#">Administrator</a></li>
+                <button class="button" onclick="goBack()">LOGOUT</button>
+            </ul>
+        </nav>
+    </div>
+</header>
+<br>
+<footer>
+  <div class="container2">
+    <h4>Students Recorde List</h4>
+      <nav>
+          <ul  class="nav-links">
+            <a href="/lifts"><button class="buttongreen">Add</button></a>
+            <a href="/edit"><button class="buttonorg">Re-Issue</button></a>
+            <a href="/delete"><button class="buttonsky">Delete</button></a>
+            <a href="/defaulters"><button class="button">Defaulters</button></a>
+          </ul>
+      </nav>
+  </div>
+</footer>
+<br>
+<ul  class="containers">
+       <!---- <button class="button">Having Qualifications</button>
+        <button class="button">Death(in service)</button>
+        <button class="button">Death(after Retirement)</button>
+        <button class="button">Death of Lady </button>
+        <button class="button">Retired Personnel</button>
+-->
+       
+</ul>
+<br>
+<ul  class="containers">
+  <a href="/returnbook"><button class="button">Return Book</button></a>
+  <input type="text" id="searchInput" placeholder="Search..." onkeyup="searchTable()">
+</ul>  
+
+  <table>
+    <thead>
+      <tr>
+        <th>S.NO</th>
+        <th>Name</th>
+       <button><th>Phone no</th></button>
+        <th>Roll No</th>
+        <th>Branch & section</th>
+        <th>Book Name & Id</th>
+        <th>Photo</th>
+        <th>Issue date</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      </tbody>
+  </table>
+
+  <button class="button" onclick="goBack()">Back</button>
+</body>
+</html>
